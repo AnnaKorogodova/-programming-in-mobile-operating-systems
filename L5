@@ -1,0 +1,11 @@
+Создаём образ Docker, используя измененный Dockerfile:
+   docker build -t nginx-dock
+Создаём volume:
+   docker volume create storage
+index.html доступен по пути /app/index.html
+Копируем данные index.html внутрь volume с помощью команды:
+   docker run -v storage:/app -v /Users/Win10Pro/desktop/lab5:/data --rm alpine sh -c "cp /data/index.html /app/"
+Используя образ alpine для временного контейнера и sh -c для выполнения команд внутри контейнера
+Проверяем, что index.html подгрузился внутрь Volume:
+   docker run -v storage:/app --rm alpine sh -c "ls /app"
+В результате команды присутствует файл index.html, требование выполнено.
