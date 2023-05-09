@@ -1,0 +1,12 @@
+Находим уже готовый html файл, который будум использовать.
+Далее в корне репозитория создаём dockerfile.
+Редактируем его с помощью следующих команд:
+   FROM nginx
+   COPY js.html /usr/share/nginx/html
+   COPY style.css /usr/share/nginx/html
+   COPY script.js /usr/share/nginx/html
+После создаём docker образ:
+   docker build -t js
+Используя "docker desktop" проверяем работоспособность контейнера.
+Проводим запуск образа:
+   docker run -itd -p 8011:80 --name nginx-dock localhost:5000/nginx:0.0.
