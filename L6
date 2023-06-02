@@ -1,0 +1,17 @@
+1. станавливаем VueCLI, используя команду
+        sudo npm install -g @vue/cli
+2. Создаём новый проект
+        vue create MyVue
+3. Создаём vue.config.js и добавляем туда следующий код:
+        module.exports = { devServer: { proxy: { '/api': 
+        {target: 'http://localhost:8080',
+        changeOrigin: true }}}}
+4. Запумкаем проект 
+        npm run serve
+5. Выполняем установку конфигурации
+        server { listen 8000;
+        location / {
+        proxy_pass http://localhost:8080;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;}}
+6. Запускаем при помощи команды nginx
